@@ -1,0 +1,39 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Sun Jul  1 09:30:57 2018
+# Process ID: 12940
+# Current directory: C:/Users/Adrion/Desktop/AsyncComponents/add_join
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14072 C:\Users\Adrion\Desktop\AsyncComponents\add_join\tmp_edit_project.xpr
+# Log file: C:/Users/Adrion/Desktop/AsyncComponents/add_join/vivado.log
+# Journal file: C:/Users/Adrion/Desktop/AsyncComponents/add_join\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Adrion/Desktop/AsyncComponents/add_join/tmp_edit_project.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/Adrion/Desktop/AsyncComponents/add_join/src/GCD_wrapper_behav.wcfg
+source async_add.tcl
+close_sim
+ipx::package_project -root_dir c:/users/adrion/desktop/asynccomponents/add_join -vendor xilinx.com -library click_components -taxonomy /UserIP -force
+set_property name a_ctrl_in [ipx::get_bus_interfaces a_in -of_objects [ipx::current_core]]
+ipx::add_port_map ack [ipx::get_bus_interfaces a_ctrl_in -of_objects [ipx::current_core]]
+set_property physical_name a_ack_out [ipx::get_port_maps ack -of_objects [ipx::get_bus_interfaces a_ctrl_in -of_objects [ipx::current_core]]]
+ipx::remove_bus_interface a_out [ipx::current_core]
+set_property name b_ctrl_in [ipx::get_bus_interfaces b_in -of_objects [ipx::current_core]]
+ipx::add_port_map ack [ipx::get_bus_interfaces b_ctrl_in -of_objects [ipx::current_core]]
+set_property physical_name b_ack_out [ipx::get_port_maps ack -of_objects [ipx::get_bus_interfaces b_ctrl_in -of_objects [ipx::current_core]]]
+ipx::remove_bus_interface b_out [ipx::current_core]
+set_property name c_ctrl_out [ipx::get_bus_interfaces c_in -of_objects [ipx::current_core]]
+ipx::add_port_map req [ipx::get_bus_interfaces c_ctrl_out -of_objects [ipx::current_core]]
+set_property physical_name c_req_out [ipx::get_port_maps req -of_objects [ipx::get_bus_interfaces c_ctrl_out -of_objects [ipx::current_core]]]
+ipx::remove_bus_interface c_out [ipx::current_core]
+ipx::remove_bus_interface rst [ipx::current_core]
+set_property core_revision 2 [ipx::current_core]
+ipx::create_xgui_files [ipx::current_core]
+ipx::update_checksums [ipx::current_core]
+ipx::save_core [ipx::current_core]
+update_ip_catalog -rebuild -repo_path c:/Users/Adrion/Desktop/AsyncComponents/add_join
+ipx::check_integrity -quiet [ipx::current_core]
+ipx::archive_core {c:\users\adrion\desktop\asynccomponents\add_join\xilinx.com_click_components_async_add_1.0.zip} [ipx::current_core]

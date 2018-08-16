@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../src/defs.vhd" \
+"../../../../src/delay_component.vhd" \
+"../../../../src/join.vhd" \
+"../../../../src/delay_element.vhd" \
+"../../../../src/async_add.vhd" \
+
+# Do not sort compile order
+nosort

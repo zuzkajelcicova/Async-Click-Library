@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x6C92DB9D6C92DB9D" bd:device="xc7k70tfbv676-1" bd:isValidated="true" bd:synthFlowMode="Hierarchical" bd:tool_version="2017.4" bd:top="GCD_block_design" bd:version="1.00.a">
+
+  <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
+    <spirit:vendor>xilinx.com</spirit:vendor>
+    <spirit:library>BlockDiagram</spirit:library>
+    <spirit:name>GCD_block_design</spirit:name>
+    <spirit:version>1.00.a</spirit:version>
+    <spirit:parameters>
+      <spirit:parameter>
+        <spirit:name>isTop</spirit:name>
+        <spirit:value spirit:format="bool" spirit:resolve="immediate">true</spirit:value>
+      </spirit:parameter>
+    </spirit:parameters>
+    <spirit:model>
+      <spirit:views>
+        <spirit:view>
+          <spirit:name>BlockDiagram</spirit:name>
+          <spirit:envIdentifier>:vivado.xilinx.com:</spirit:envIdentifier>
+          <spirit:hierarchyRef spirit:library="BlockDiagram" spirit:name="GCD_block_design_imp" spirit:vendor="xilinx.com" spirit:version="1.00.a"/>
+        </spirit:view>
+      </spirit:views>
+      <spirit:ports>
+        <spirit:port>
+          <spirit:name>rst</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>go</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>RESULT</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>31</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>AB</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+            <spirit:vector>
+              <spirit:left>31</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+      </spirit:ports>
+    </spirit:model>
+  </spirit:component>
+
+  <spirit:design xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
+    <spirit:vendor>xilinx.com</spirit:vendor>
+    <spirit:library>BlockDiagram</spirit:library>
+    <spirit:name>GCD_block_design_imp</spirit:name>
+    <spirit:version>1.00.a</spirit:version>
+    <spirit:componentInstances>
+      <spirit:componentInstance>
+        <spirit:instanceName>click_element_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="click_element" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_click_element_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="VALUE">80872186</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PHASE_INIT">"1"</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>click_element_1</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="click_element" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_click_element_1_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="DATA_WIDTH_1">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="VALUE">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PHASE_INIT">"1"</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>gate_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="gate" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_gate_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>inverter_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="inverter" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_inverter_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>Mux_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="Mux" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_Mux_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>demux_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="demux" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_demux_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>demux_1</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="demux" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_demux_1_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>fork_stage_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="fork_stage" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_fork_stage_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>fork_stage_1</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="fork_stage" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_fork_stage_1_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>sel_a_larger_b_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="sel_a_larger_b" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_sel_a_larger_b_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>sel_a_not_b_fork_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="sel_a_not_b_fork" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_sel_a_not_b_fork_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>merge_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="merge" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_merge_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>a_minus_b_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="a_minus_b" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_a_minus_b_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>b_minus_a_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="b_minus_a" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_b_minus_a_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>delay_element_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="delay_element" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_delay_element_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="size">15</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>delay_element_1</spirit:instanceName>
+        <spirit:componentRef spirit:library="click_components" spirit:name="delay_element" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">GCD_block_design_delay_element_1_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="size">15</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+    </spirit:componentInstances>
+    <spirit:interconnections>
+      <spirit:interconnection>
+        <spirit:name>click_element_0_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="ctrl_out" spirit:componentRef="click_element_0"/>
+        <spirit:activeInterface spirit:busRef="ctrl_in" spirit:componentRef="gate_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>gate_0_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="ctrl_out" spirit:componentRef="gate_0"/>
+        <spirit:activeInterface spirit:busRef="a_ctrl_in" spirit:componentRef="Mux_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>click_element_1_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="sel_ctrl_in" spirit:componentRef="Mux_0"/>
+        <spirit:activeInterface spirit:busRef="ctrl_out" spirit:componentRef="click_element_1"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>inverter_0_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="ctrl_out" spirit:componentRef="inverter_0"/>
+        <spirit:activeInterface spirit:busRef="ctrl_in" spirit:componentRef="click_element_1"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>Mux_0_c_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="c_ctrl_out" spirit:componentRef="Mux_0"/>
+        <spirit:activeInterface spirit:busRef="a_ctrl_in" spirit:componentRef="fork_stage_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>fork_stage_0_b_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="b_ctrl_out" spirit:componentRef="fork_stage_0"/>
+        <spirit:activeInterface spirit:busRef="ctrl_a_in" spirit:componentRef="sel_a_not_b_fork_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>fork_stage_0_c_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="c_ctrl_out" spirit:componentRef="fork_stage_0"/>
+        <spirit:activeInterface spirit:busRef="a_ctrl_in" spirit:componentRef="demux_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>sel_a_not_b_fork_0_ctrl_sel_c_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="ctrl_sel_c_out" spirit:componentRef="sel_a_not_b_fork_0"/>
+        <spirit:activeInterface spirit:busRef="sel_ctrl_in" spirit:componentRef="demux_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>sel_a_not_b_fork_0_ctrl_sel_b_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="ctrl_sel_b_out" spirit:componentRef="sel_a_not_b_fork_0"/>
+        <spirit:activeInterface spirit:busRef="ctrl_in" spirit:componentRef="inverter_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>demux_0_c_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="a_ctrl_in" spirit:componentRef="fork_stage_1"/>
+        <spirit:activeInterface spirit:busRef="c_ctrl_out" spirit:componentRef="demux_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>fork_stage_1_b_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="b_ctrl_out" spirit:componentRef="fork_stage_1"/>
+        <spirit:activeInterface spirit:busRef="ctrl_in" spirit:componentRef="sel_a_larger_b_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>sel_a_larger_b_0_sel_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="sel_ctrl_out" spirit:componentRef="sel_a_larger_b_0"/>
+        <spirit:activeInterface spirit:busRef="sel_ctrl_in" spirit:componentRef="demux_1"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>fork_stage_1_c_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="c_ctrl_out" spirit:componentRef="fork_stage_1"/>
+        <spirit:activeInterface spirit:busRef="a_ctrl_in" spirit:componentRef="demux_1"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>merge_0_c_ctrl_out</spirit:name>
+        <spirit:activeInterface spirit:busRef="c_ctrl_out" spirit:componentRef="merge_0"/>
+        <spirit:activeInterface spirit:busRef="b_ctrl_in" spirit:componentRef="Mux_0"/>
+      </spirit:interconnection>
+    </spirit:interconnections>
+    <spirit:adHocConnections>
+      <spirit:adHocConnection>
+        <spirit:name>click_element_1_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="click_element_1" spirit:portRef="data_out"/>
+        <spirit:internalPortReference spirit:componentRef="Mux_0" spirit:portRef="selector"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>Mux_0_c_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="Mux_0" spirit:portRef="c_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_0" spirit:portRef="a_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>click_element_0_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="click_element_0" spirit:portRef="data_out"/>
+        <spirit:internalPortReference spirit:componentRef="Mux_0" spirit:portRef="a_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fork_stage_0_b_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_0" spirit:portRef="b_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="sel_a_not_b_fork_0" spirit:portRef="a_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fork_stage_0_c_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_0" spirit:portRef="c_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="demux_0" spirit:portRef="a_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>sel_a_not_b_fork_0_selector</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="sel_a_not_b_fork_0" spirit:portRef="selector"/>
+        <spirit:internalPortReference spirit:componentRef="click_element_1" spirit:portRef="data_in"/>
+        <spirit:internalPortReference spirit:componentRef="demux_0" spirit:portRef="selector"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>demux_0_c_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="demux_0" spirit:portRef="c_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_1" spirit:portRef="a_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fork_stage_1_b_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_1" spirit:portRef="b_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="sel_a_larger_b_0" spirit:portRef="data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>sel_a_larger_b_0_selector</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="sel_a_larger_b_0" spirit:portRef="selector"/>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="selector"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fork_stage_1_c_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_1" spirit:portRef="c_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="a_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>demux_1_b_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="b_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="a_minus_b_0" spirit:portRef="ab"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>demux_1_c_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="c_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="b_minus_a_0" spirit:portRef="ab"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>a_minus_b_0_result</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="a_minus_b_0" spirit:portRef="result"/>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="a_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>b_minus_a_0_result</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="b_minus_a_0" spirit:portRef="result"/>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="b_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>merge_0_c_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="c_data_out"/>
+        <spirit:internalPortReference spirit:componentRef="Mux_0" spirit:portRef="b_data_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>demux_1_b_req_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="b_req_out"/>
+        <spirit:internalPortReference spirit:componentRef="delay_element_1" spirit:portRef="d"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>delay_element_1_z</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="delay_element_1" spirit:portRef="z"/>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="a_req_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>merge_0_a_ack_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="a_ack_out"/>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="b_ack_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>demux_1_c_req_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="c_req_out"/>
+        <spirit:internalPortReference spirit:componentRef="delay_element_0" spirit:portRef="d"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>delay_element_0_z</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="delay_element_0" spirit:portRef="z"/>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="b_req_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>merge_0_b_ack_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="b_ack_out"/>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="c_ack_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>demux_0_b_req_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="demux_0" spirit:portRef="b_req_out"/>
+        <spirit:internalPortReference spirit:componentRef="demux_0" spirit:portRef="b_ack_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>rst_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="click_element_0" spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="merge_0" spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="click_element_1" spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="Mux_0" spirit:portRef="reset"/>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_0" spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="demux_1" spirit:portRef="reset"/>
+        <spirit:internalPortReference spirit:componentRef="sel_a_larger_b_0" spirit:portRef="reset"/>
+        <spirit:internalPortReference spirit:componentRef="sel_a_not_b_fork_0" spirit:portRef="reset"/>
+        <spirit:internalPortReference spirit:componentRef="demux_0" spirit:portRef="reset"/>
+        <spirit:internalPortReference spirit:componentRef="fork_stage_1" spirit:portRef="rst"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>go_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="go"/>
+        <spirit:internalPortReference spirit:componentRef="gate_0" spirit:portRef="go"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>click_element_0_ack_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="click_element_0" spirit:portRef="ack_out"/>
+        <spirit:internalPortReference spirit:componentRef="click_element_0" spirit:portRef="req_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>demux_0_b_data_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="demux_0" spirit:portRef="b_data_out"/>
+        <spirit:externalPortReference spirit:portRef="RESULT"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>AB_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="AB"/>
+        <spirit:internalPortReference spirit:componentRef="click_element_0" spirit:portRef="data_in"/>
+      </spirit:adHocConnection>
+    </spirit:adHocConnections>
+  </spirit:design>
+
+</bd:repository>

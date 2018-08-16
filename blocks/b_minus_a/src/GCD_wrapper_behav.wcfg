@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="GCD_wrapper_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="GCD_wrapper" />
+            <top_module name="defs" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="583280000fs"></ZoomStartTime>
+      <ZoomEndTime time="1448280001fs"></ZoomEndTime>
+      <Cursor1Time time="1008000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="143"></NameColumnWidth>
+      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/GCD_wrapper/RESULT" type="array">
+      <obj_property name="ElementShortName">RESULT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RESULT[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/ack_ab" type="logic">
+      <obj_property name="ElementShortName">ack_ab</obj_property>
+      <obj_property name="ObjectShortName">ack_ab</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/req_ab" type="logic">
+      <obj_property name="ElementShortName">req_ab</obj_property>
+      <obj_property name="ObjectShortName">req_ab</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/AB" type="array">
+      <obj_property name="ElementShortName">AB[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AB[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/res" type="array">
+      <obj_property name="ElementShortName">res[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/A" type="array">
+      <obj_property name="ElementShortName">A[15:0]</obj_property>
+      <obj_property name="ObjectShortName">A[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/B" type="array">
+      <obj_property name="ElementShortName">B[15:0]</obj_property>
+      <obj_property name="ObjectShortName">B[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/go" type="logic">
+      <obj_property name="ElementShortName">go</obj_property>
+      <obj_property name="ObjectShortName">go</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/A_result" type="array">
+      <obj_property name="ElementShortName">A_result[15:0]</obj_property>
+      <obj_property name="ObjectShortName">A_result[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/B_result" type="array">
+      <obj_property name="ElementShortName">B_result[15:0]</obj_property>
+      <obj_property name="ObjectShortName">B_result[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/GCD_component/demux_0_c_ctrl_out_req" type="logic">
+      <obj_property name="ElementShortName">demux_0_c_ctrl_out_req</obj_property>
+      <obj_property name="ObjectShortName">demux_0_c_ctrl_out_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/GCD_component/demux_0_b_req_out" type="logic">
+      <obj_property name="ElementShortName">demux_0_b_req_out</obj_property>
+      <obj_property name="ObjectShortName">demux_0_b_req_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/GCD_component/sel_a_larger_b_0_selector" type="logic">
+      <obj_property name="ElementShortName">sel_a_larger_b_0_selector</obj_property>
+      <obj_property name="ObjectShortName">sel_a_larger_b_0_selector</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/GCD_component/a_minus_b_0_result" type="array">
+      <obj_property name="ElementShortName">a_minus_b_0_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a_minus_b_0_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/GCD_component/demux_1/b_req_out" type="logic">
+      <obj_property name="ElementShortName">b_req_out</obj_property>
+      <obj_property name="ObjectShortName">b_req_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/GCD_component/b_minus_a_0_result" type="array">
+      <obj_property name="ElementShortName">b_minus_a_0_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b_minus_a_0_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/GCD_wrapper/GCD_component/demux_1/c_req_out" type="logic">
+      <obj_property name="ElementShortName">c_req_out</obj_property>
+      <obj_property name="ObjectShortName">c_req_out</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,9 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Adrion/Desktop/AsyncComponents/add_join/src/defs.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Adrion/Desktop/AsyncComponents/add_join/src/delay_component.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity delay_component
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Adrion/Desktop/AsyncComponents/add_join/src/join.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity join
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Adrion/Desktop/AsyncComponents/add_join/src/delay_element.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity delay_element
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Adrion/Desktop/AsyncComponents/add_join/src/async_add.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity async_add
