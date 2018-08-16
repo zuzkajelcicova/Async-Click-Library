@@ -5,13 +5,16 @@ This project contains the source files and IP blocks for a number of click-based
 ---------------------------------------------
 1. Create new project
 2. Create a new interface definition (Tools -> Create interface definition) with the name "async_2ph_ch". Add two new port with the following parameteres:
-	#PORT 1:
+	### PORT 1: ###
+
 	 - Display Name: 		req 
 	 - Default value:		0
 	 - Width:				1
 	 - Master-Direction:	out
 	 - Slave-Direction:		in
-	#PORT 2:
+
+	### PORT 2: ###
+	
 	 - Display Name: 		ack 
 	 - Default value:		0
 	 - Width:				1
