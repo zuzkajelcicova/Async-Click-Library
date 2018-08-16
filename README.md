@@ -22,5 +22,7 @@ This project contains the source files and IP blocks for a number of click-based
 	 - Slave-Direction:		out	<br/>
 
 and save the interface. This will create the interface used by all components. For the changes to take effect restart vivado. <br/>
+<br/>
 3. To import the IP blocks, go to Tools -> Settings -> IP -> Repository and add the path to /blocks to the list of repositories. <br/>
+<br/>
 4. At this point you should be able to build block designs with the IP INTEGRATOR tool. To find the components, look-up the library click-elements.
