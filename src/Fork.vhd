@@ -6,7 +6,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.defs.all;
 
-entity Fork is
+entity fork is
     generic ( 
        PHASE_INIT : std_logic := '0');
 	port(
@@ -22,14 +22,12 @@ entity Fork is
        c_req_out:   out std_logic;
        c_ack_in:    in std_logic
 	);
-end Fork;
+end fork;
 
-architecture arch of Fork is
+architecture arch of fork is
 
 	signal click: std_logic;
 	signal phase: std_logic := PHASE_INIT;
-	signal and_acks_high_in: std_logic;
-	signal and_acks_low_in: std_logic;
 	
 	attribute dont_touch : string;
     attribute dont_touch of  phase : signal is "true";   
@@ -37,15 +35,11 @@ architecture arch of Fork is
 
 begin
 	-- Control Path
-	b_req_out <= phase;
-	c_req_out <= phase;
+	b_req_out <= a_req_in;
+	c_req_out <= a_req_in;
 	a_ack_out <= phase;
 
-	-- Click control circuit F()
-	and_acks_high_in <= b_ack_in and c_ack_in;
-	and_acks_low_in  <= (not b_ack_in) and (not c_ack_in);
-
-    click <= (a_req_in and and_acks_low_in and not(phase)) or (not(a_req_in) and and_acks_high_in and phase) after AND2_DELAY + AND3_DELAY + OR2_DELAY; 
+    click <= (c_ack_in and b_ack_in and not(phase)) or (not(c_ack_in) and not(b_ack_in) and phase) after AND3_DELAY + OR2_DELAY; 
 
 	clock_regs: process(click, rst)
 	begin

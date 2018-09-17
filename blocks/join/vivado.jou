@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Sep 10 19:37:55 2018
+# Process ID: 16436
+# Current directory: C:/Async-Click-Library/blocks/join
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16552 C:\Async-Click-Library\blocks\join\tmp_edit_project.xpr
+# Log file: C:/Async-Click-Library/blocks/join/vivado.log
+# Journal file: C:/Async-Click-Library/blocks/join\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Async-Click-Library/blocks/join/tmp_edit_project.xpr
+update_compile_order -fileset sources_1
+ipx::open_ipxact_file C:/Async-Click-Library/blocks/join/component.xml
+ipx::merge_project_changes hdl_parameters [ipx::current_core]
+set_property core_revision 2 [ipx::current_core]
+ipx::create_xgui_files [ipx::current_core]
+ipx::update_checksums [ipx::current_core]
+ipx::save_core [ipx::current_core]
+set_property  ip_repo_paths  {c:/Async-Click-Library/blocks/join c:/Async-Click-Library/blocks/add_block c:/Users/User/AppData/Roaming/Xilinx/ip_repo c:/Async-Click-Library/blocks/asym_fork_stage} [current_project]
+update_ip_catalog
+ipx::check_integrity -quiet [ipx::current_core]
+ipx::archive_core {c:\Async-Click-Library\blocks\join\xilinx.com_click_element_join_1.0.zip} [ipx::current_core]
+ipx::unload_core component_1

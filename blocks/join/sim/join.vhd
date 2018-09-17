@@ -49,8 +49,10 @@ clock_regs: process(click)
     begin
         if rst = '1' then
             phase <= PHASE_INIT;
-        elsif rising_edge(click) then
-            phase <= not(phase) after REG_CQ_DELAY;
+        else
+            if rising_edge(click) then
+                phase <= not(phase) after REG_CQ_DELAY;
+            end if;
         end if;
     end process;
 
