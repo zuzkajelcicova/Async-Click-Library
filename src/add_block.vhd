@@ -40,12 +40,14 @@ entity add_block is
   Port (
         a_data_in: in std_logic_vector(DATA_WIDTH-1 downto 0);
         b_data_in: in std_logic_vector(DATA_WIDTH-1 downto 0);
-        c_data_out: out std_logic_vector(DATA_WIDTH-1 downto 0));
+        c_data_out: out std_logic_vector(DATA_WIDTH-1 downto 0)
+        );
 end add_block;
 
 architecture Behavioral of add_block is
 
 begin
+
 c_data_out <= a_data_in + b_data_in after ADDER_DELAY;
 
 end Behavioral;

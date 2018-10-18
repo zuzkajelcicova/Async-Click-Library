@@ -1,21 +1,5 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 09/09/2018 08:17:43 PM
--- Design Name: 
--- Module Name: asym_fork_stage - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
+-- Generic fork
 ----------------------------------------------------------------------------------
 
 
@@ -25,73 +9,78 @@ use work.defs.all;
 use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity asym_fork_stage is
  generic ( 
             DATA_WIDTH: natural := DATA_WIDTH;
             VALUE: natural := 0;
-            PHASE_INIT : std_logic := '0');
+            PHASE_INIT_A : std_logic := '0';
+            PHASE_INIT_B : std_logic := '0';
+            PHASE_INIT_C : std_logic := '0');
   Port (
         rst : in std_logic;
         --Input channel
-        a_req_in: in std_logic;
-        a_data_in: in std_logic_vector(DATA_WIDTH-1 downto 0);
-        a_ack_out: out std_logic;
-     
+        req_in_a: in std_logic;
+        data_in_a: in std_logic_vector(DATA_WIDTH-1 downto 0);
+        ack_out_a: out std_logic;
         --Output channel 1
-        a_req_out: out std_logic;
-        a_data_out: out std_logic_vector(DATA_WIDTH-1 downto 0);
-        a_ack_in: in std_logic;
+        req_out_b: out std_logic;
+        data_out_b: out std_logic_vector(DATA_WIDTH-1 downto 0);
+        ack_in_b: in std_logic;
         --Output channel 2
-        c_req_out: out std_logic;
-        c_data_out: out std_logic_vector(DATA_WIDTH-1 downto 0);
-        c_ack_in: in std_logic );
+        req_out_c: out std_logic;
+        data_out_c: out std_logic_vector(DATA_WIDTH-1 downto 0);
+        ack_in_c: in std_logic );
 end asym_fork_stage;
 
 architecture Behavioral of asym_fork_stage is
 
-signal click: std_logic;
-signal asym_req: std_logic;
-signal phase: std_logic;
-signal phase_asym: std_logic;
-signal nota_c, notc_a: std_logic;
+signal click, r_neg_and_chan_c, r_neg_and_chan_b, click_2: std_logic;
+signal phase_a: std_logic;
+signal phase_b, phase_c, cond, r_pos_and_chan_c, b_chan_xnor, r_pos_and_chan_b, c_chan_xnor, a_chan_xnor, click_1: std_logic;
+signal left, right: std_logic;
 signal data_reg: std_logic_vector(DATA_WIDTH-1 downto 0);
+
+attribute dont_touch : string;
+attribute dont_touch of  phase_b, phase_a, phase_c : signal is "true";   
+attribute dont_touch of  data_reg : signal is "true";  
+attribute dont_touch of  click : signal is "true";
 
 
 begin
-
-    nota_c <= not(a_ack_in) and c_ack_in after AND2_DELAY + NOT1_DELAY;
-    notc_a <= not(c_ack_in) and a_ack_in after AND2_DELAY + NOT1_DELAY;
+    a_chan_xnor <= req_in_a xor phase_a after XOR_DELAY + NOT1_DELAY;
+    r_pos_and_chan_c <= req_in_a and phase_c and ack_in_c after AND3_DELAY;
+    b_chan_xnor <= phase_b xnor ack_in_b after XOR_DELAY + NOT1_DELAY;
+    r_pos_and_chan_b <= req_in_a and phase_b and ack_in_b after AND3_DELAY;
+    c_chan_xnor <= phase_c xnor ack_in_c after XOR_DELAY + NOT1_DELAY;
+    click_1 <= (r_pos_and_chan_c and b_chan_xnor) or (r_pos_and_chan_b and c_chan_xnor) after AND2_DELAY + OR2_DELAY;
+    -------------------------------------------------------------
+    r_neg_and_chan_c <= not(req_in_a) and phase_c and ack_in_c after AND3_DELAY;
+    r_neg_and_chan_b <= not(req_in_a) and phase_b and ack_in_b after AND3_DELAY;
+    click_2 <= (r_neg_and_chan_c and b_chan_xnor) or (r_neg_and_chan_b and c_chan_xnor) after AND2_DELAY + OR2_DELAY;
+    -------------------------------------------------------
     
-    click <= (nota_c and a_req_in and not(phase)) or (notc_a and not(a_req_in) and phase) after AND3_DELAY + OR2_DELAY;
+    click <= (click_1 and a_chan_xnor) or (click_2 and a_chan_xnor) after OR2_DELAY;
     
     clock_regs: process(click, rst)
     begin
         if rst = '1' then
-           phase <= PHASE_INIT;
-           phase_asym <= not(PHASE_INIT);
+           phase_a <= PHASE_INIT_A;
+           phase_b <= PHASE_INIT_B;
+           phase_c <= PHASE_INIT_C;
            data_reg <= std_logic_vector(to_unsigned(VALUE, DATA_WIDTH));
-        else
-            if rising_edge(click) then
-                phase <= not phase after REG_CQ_DELAY;
-                phase_asym <= not phase_asym after REG_CQ_DELAY;
-                data_reg <= a_data_in after REG_CQ_DELAY;
-            end if;
+        elsif rising_edge(click) then
+                phase_a <= not phase_a after REG_CQ_DELAY;
+                phase_b <= not phase_b after REG_CQ_DELAY;
+                phase_c <= not phase_c after REG_CQ_DELAY;
+                data_reg <= data_in_a after REG_CQ_DELAY;
         end if;
     end process clock_regs;
     
-    a_ack_out <= phase;
-    a_req_out <= phase;
-    c_req_out <= phase_asym;
-    a_data_out <= data_reg;
-    c_data_out <= data_reg;
+    ack_out_a <= phase_a;
+    req_out_b <= phase_b;
+    req_out_c <= phase_c;
+    data_out_b <= data_reg;
+    data_out_c <= data_reg;
 
 end Behavioral;
