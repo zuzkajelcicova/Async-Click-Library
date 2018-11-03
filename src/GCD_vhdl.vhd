@@ -9,8 +9,9 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-library UNISIM;
-use UNISIM.VCOMPONENTS.ALL;
+
+use work.defs.all;
+
 entity GCD is
   port (
     AB : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -25,65 +26,65 @@ entity GCD is
 end GCD;
 
 architecture STRUCTURE of GCD is
-  component mux is
+  component unbuff_mux is
   port (
-    reset : in STD_LOGIC;
-    a_req_in : in STD_LOGIC;
-    a_data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    a_ack_out : out STD_LOGIC;
-    b_req_in : in STD_LOGIC;
-    b_data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    b_ack_out : out STD_LOGIC;
-    c_req_out : out STD_LOGIC;
-    c_data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    c_ack_in : in STD_LOGIC;
-    sel_req_in : in STD_LOGIC;
-    sel_ack_out : out STD_LOGIC;
+    rst : in STD_LOGIC;
+    ch_in_a_req : in STD_LOGIC;
+    ch_in_a_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_in_a_ack : out STD_LOGIC;
+    ch_in_b_req : in STD_LOGIC;
+    ch_in_b_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_in_b_ack : out STD_LOGIC;
+    ch_out_c_req : out STD_LOGIC;
+    ch_out_c_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_c_ack : in STD_LOGIC;
+    ch_in_sel_req : in STD_LOGIC;
+    ch_in_sel_ack : out STD_LOGIC;
     selector : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  end component mux;
+  end component unbuff_mux;
   component gate is
   port (
     go : in STD_LOGIC;
-    ack_out : out STD_LOGIC;
-    req_in : in STD_LOGIC;
-    ack_in : in STD_LOGIC;
-    req_out : out STD_LOGIC
+    ch_in_ack : out STD_LOGIC;
+    ch_in_req : in STD_LOGIC;
+    ch_out_ack : in STD_LOGIC;
+    ch_out_req : out STD_LOGIC
   );
   end component gate;
   component fork_top is
   port (
     rst : in STD_LOGIC;
-    a_req_in : in STD_LOGIC;
-    a_data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    a_ack_out : out STD_LOGIC;
-    b_req_out : out STD_LOGIC;
-    b_data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    b_ack_in : in STD_LOGIC;
-    c_req_out : out STD_LOGIC;
-    c_data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    c_ack_in : in STD_LOGIC
+    ch_in_a_req : in STD_LOGIC;
+    ch_in_a_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_in_a_ack : out STD_LOGIC;
+    ch_out_b_req : out STD_LOGIC;
+    ch_out_b_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_b_ack : in STD_LOGIC;
+    ch_out_c_req : out STD_LOGIC;
+    ch_out_c_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_c_ack : in STD_LOGIC
   );
   end component fork_top;
   
   component sel_a_larger_b is
       port(
-          reset: in  std_logic;
-          data_in : in  std_logic_vector(31 downto 0);
-          req_in : in  std_logic;
-          ack_out : out std_logic;
+          rst: in  std_logic;
+          ch_in_data : in  std_logic_vector(31 downto 0);
+          ch_in_req : in  std_logic;
+          ch_in_ack : out std_logic;
           selector : out std_logic;
-          sel_req_out : out std_logic;
-          sel_ack_in : in  std_logic
+          ch_out_sel_req : out std_logic;
+          ch_out_sel_ack : in  std_logic
           );
   end component sel_a_larger_b;
   
   component sel_a_not_b_fork is
   port (
-    reset : in STD_LOGIC;
-    a_data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    a_req_in : in STD_LOGIC;
-    a_ack_out : out STD_LOGIC;
+    rst : in STD_LOGIC;
+    ch_in_a_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_in_a_req : in STD_LOGIC;
+    ch_in_a_ack : out STD_LOGIC;
     selector : out STD_LOGIC_VECTOR ( 0 to 0 );
     sel_req_b_out : out STD_LOGIC;
     sel_ack_b_in : in STD_LOGIC;
@@ -91,30 +92,30 @@ architecture STRUCTURE of GCD is
     sel_ack_c_in : in STD_LOGIC
   );
   end component sel_a_not_b_fork;
-  component demux is
+  component unbuff_demux is
   port (
-    reset : in STD_LOGIC;
-    a_req_in : in STD_LOGIC;
-    a_data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    a_ack_out : out STD_LOGIC;
-    sel_req_in : in STD_LOGIC;
-    sel_ack_out : out STD_LOGIC;
+    rst : in STD_LOGIC;
+    ch_in_a_req : in STD_LOGIC;
+    ch_in_a_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_in_a_ack : out STD_LOGIC;
+    ch_in_sel_req : in STD_LOGIC;
+    ch_in_sel_ack : out STD_LOGIC;
     selector : in STD_LOGIC;
-    b_req_out : out STD_LOGIC;
-    b_data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    b_ack_in : in STD_LOGIC;
-    c_req_out : out STD_LOGIC;
-    c_data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    c_ack_in : in STD_LOGIC
+    ch_out_b_req : out STD_LOGIC;
+    ch_out_b_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_b_ack : in STD_LOGIC;
+    ch_out_c_req : out STD_LOGIC;
+    ch_out_c_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_c_ack : in STD_LOGIC
   );
-  end component demux;
+  end component unbuff_demux;
  
   component inverter is
   port (
-    req_in : in STD_LOGIC;
-    ack_out : out STD_LOGIC;
-    req_out : out STD_LOGIC;
-    ack_in : in STD_LOGIC
+    ch_in_req : in STD_LOGIC;
+    ch_in_ack : out STD_LOGIC;
+    ch_out_req : out STD_LOGIC;
+    ch_out_ack : in STD_LOGIC
   );
   end component inverter;
   component click_element is
@@ -123,29 +124,29 @@ architecture STRUCTURE of GCD is
     PHASE_INIT : std_logic := '0');
   port (
     rst : in STD_LOGIC;
-    ack_out : out STD_LOGIC;
-    req_in : in STD_LOGIC;
-    data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    req_out : out STD_LOGIC;
-    data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    ack_in : in STD_LOGIC
+    ch_in_ack : out STD_LOGIC;
+    ch_in_req : in STD_LOGIC;
+    ch_in_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_req : out STD_LOGIC;
+    ch_out_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_ack : in STD_LOGIC
   );
   end component click_element;
   
-  component merge is
+  component unbuff_merge is
   port (
     rst : in STD_LOGIC;
-    a_req_in : in STD_LOGIC;
-    a_ack_out : out STD_LOGIC;
-    a_data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    b_req_in : in STD_LOGIC;
-    b_ack_out : out STD_LOGIC;
-    b_data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    c_req_out : out STD_LOGIC;
-    c_data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    c_ack_in : in STD_LOGIC
+    ch_in_a_req : in STD_LOGIC;
+    ch_in_a_ack : out STD_LOGIC;
+    ch_in_a_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_in_b_req : in STD_LOGIC;
+    ch_in_b_ack : out STD_LOGIC;
+    ch_in_b_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_c_req : out STD_LOGIC;
+    ch_out_c_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ch_out_c_ack : in STD_LOGIC
   );
-  end component merge;
+  end component unbuff_merge;
   
   component a_minus_b is
   port (
@@ -223,20 +224,20 @@ begin
   go_1 <= go;
   rst_1 <= rst;
   
-Mux_0: component mux
+Mux_0: component unbuff_mux
      port map (
-      a_ack_out => gate_0_ctrl_out_ack,
-      a_data_in(31 downto 0) => AB_1(31 downto 0),
-      a_req_in => gate_0_ctrl_out_req,
-      b_ack_out => merge_0_c_ctrl_out_ack,
-      b_data_in(31 downto 0) => merge_0_c_data_out(31 downto 0),
-      b_req_in => merge_0_c_ctrl_out_req,
-      c_ack_in => Mux_0_c_ctrl_out_ack,
-      c_data_out(31 downto 0) => Mux_0_c_data_out(31 downto 0),
-      c_req_out => Mux_0_c_ctrl_out_req,
-      reset => rst_1,
-      sel_ack_out => click_element_1_ctrl_out_ack,
-      sel_req_in => click_element_1_ctrl_out_req,
+      ch_in_a_ack => gate_0_ctrl_out_ack,
+      ch_in_a_data(31 downto 0) => AB_1(31 downto 0),
+      ch_in_a_req => gate_0_ctrl_out_req,
+      ch_in_b_ack => merge_0_c_ctrl_out_ack,
+      ch_in_b_data(31 downto 0) => merge_0_c_data_out(31 downto 0),
+      ch_in_b_req => merge_0_c_ctrl_out_req,
+      ch_out_c_ack => Mux_0_c_ctrl_out_ack,
+      ch_out_c_data(31 downto 0) => Mux_0_c_data_out(31 downto 0),
+      ch_out_c_req => Mux_0_c_ctrl_out_req,
+      rst => rst_1,
+      ch_in_sel_ack => click_element_1_ctrl_out_ack,
+      ch_in_sel_req => click_element_1_ctrl_out_req,
       selector(0) => click_element_1_data_out(0)
     );
 a_minus_b_0: component a_minus_b
@@ -255,131 +256,140 @@ click_element_0: component click_element
        PHASE_INIT => '1'
     )
      port map (
-      ack_in => click_element_0_ctrl_out_ack,
-      ack_out => click_element_0_ack_out,
-      data_in(31 downto 0) => click_element_0_data_out(31 downto 0),
-      data_out(31 downto 0) => click_element_0_data_out(31 downto 0),
-      req_in => click_element_0_ack_out,
-      req_out => click_element_0_ctrl_out_req,
+      ch_out_ack => click_element_0_ctrl_out_ack,
+      ch_in_ack => click_element_0_ack_out,
+      ch_in_data(31 downto 0) => click_element_0_data_out(31 downto 0),
+      ch_out_data(31 downto 0) => click_element_0_data_out(31 downto 0),
+      ch_in_req => '1',
+      ch_out_req => click_element_0_ctrl_out_req,
       rst => rst_1
     );
-click_element_1: entity work.click_element
+decoup_hand_1: entity work.decoupled_hs_reg
      generic map(
-        DATA_WIDTH_1 => 1,
-        VALUE => 1,
-        PHASE_INIT => '1'
+                 DATA_WIDTH_1=> 1,
+                 VALUE => 1,
+                 PHASE_INIT_UP => '0',
+                 PHASE_INIT_DOWN => '1'
      )
      port map (
-      ack_in => click_element_1_ctrl_out_ack,
-      ack_out => inverter_0_ctrl_out_ack,
-      data_in => sel_a_not_b_fork_0_selector,
-      data_out => click_element_1_data_out,
-      req_in => inverter_0_ctrl_out_req,
-      req_out => click_element_1_ctrl_out_req,
+      ch_out_ack => click_element_1_ctrl_out_ack,
+      ch_in_ack => sel_a_not_b_fork_0_sel_ctrl_b_out_ack,
+      ch_in_data => sel_a_not_b_fork_0_selector,
+      ch_out_data => click_element_1_data_out,
+      ch_in_req => sel_a_not_b_fork_0_sel_ctrl_b_out_req,
+      ch_out_req => click_element_1_ctrl_out_req,
       rst => rst_1
     );
-demux_0: component demux
+demux_0: component unbuff_demux
      port map (
-      a_ack_out => fork_top_0_c_ctrl_out_ack,
-      a_data_in(31 downto 0) => fork_top_0_c_data_out(31 downto 0),
-      a_req_in => fork_top_0_c_ctrl_out_req,
-      b_ack_in => demux_0_b_req_out,
-      b_data_out(31 downto 0) => demux_0_b_data_out(31 downto 0),
-      b_req_out => demux_0_b_req_out,
-      c_ack_in => demux_0_c_ctrl_out_ack,
-      c_data_out(31 downto 0) => demux_0_c_data_out(31 downto 0),
-      c_req_out => demux_0_c_ctrl_out_req,
-      reset => rst_1,
-      sel_ack_out => sel_a_not_b_fork_0_sel_ctrl_c_out_ack,
-      sel_req_in => sel_a_not_b_fork_0_sel_ctrl_c_out_req,
+      ch_in_a_ack => fork_top_0_c_ctrl_out_ack,
+      ch_in_a_data(31 downto 0) => fork_top_0_c_data_out(31 downto 0),
+      ch_in_a_req => fork_top_0_c_ctrl_out_req,
+      ch_out_b_ack => demux_0_b_req_out,
+      ch_out_b_data(31 downto 0) => demux_0_b_data_out(31 downto 0),
+      ch_out_b_req => demux_0_b_req_out,
+      ch_out_c_ack => demux_0_c_ctrl_out_ack,
+      ch_out_c_data(31 downto 0) => demux_0_c_data_out(31 downto 0),
+      ch_out_c_req => demux_0_c_ctrl_out_req,
+      rst => rst_1,
+      ch_in_sel_ack => sel_a_not_b_fork_0_sel_ctrl_c_out_ack,
+      ch_in_sel_req => sel_a_not_b_fork_0_sel_ctrl_c_out_req,
       selector => sel_a_not_b_fork_0_selector(0)
     );
-demux_1: component demux
+demux_1: component unbuff_demux
      port map (
-      a_ack_out => fork_top_1_c_ctrl_out_ack,
-      a_data_in(31 downto 0) => fork_top_1_c_data_out(31 downto 0),
-      a_req_in => fork_top_1_c_ctrl_out_req,
-      b_ack_in => demux_1_b_ctrl_out_ack,
-      b_data_out(31 downto 0) => demux_1_b_data_out(31 downto 0),
-      b_req_out => demux_1_b_ctrl_out_req,
-      c_ack_in => demux_1_c_ctrl_out_ack,
-      c_data_out(31 downto 0) => demux_1_c_data_out(31 downto 0),
-      c_req_out => demux_1_c_ctrl_out_req,
-      reset => rst_1,
-      sel_ack_out => sel_a_larger_b_0_sel_ctrl_out_ack,
-      sel_req_in => sel_a_larger_b_0_sel_ctrl_out_req,
+      ch_in_a_ack => fork_top_1_c_ctrl_out_ack,
+      ch_in_a_data(31 downto 0) => fork_top_1_c_data_out(31 downto 0),
+      ch_in_a_req => fork_top_1_c_ctrl_out_req,
+      ch_out_b_ack => demux_1_b_ctrl_out_ack,
+      ch_out_b_data(31 downto 0) => demux_1_b_data_out(31 downto 0),
+      ch_out_b_req => demux_1_b_ctrl_out_req,
+      ch_out_c_ack => demux_1_c_ctrl_out_ack,
+      ch_out_c_data(31 downto 0) => demux_1_c_data_out(31 downto 0),
+      ch_out_c_req => demux_1_c_ctrl_out_req,
+      rst => rst_1,
+      ch_in_sel_ack => sel_a_larger_b_0_sel_ctrl_out_ack,
+      ch_in_sel_req => sel_a_larger_b_0_sel_ctrl_out_req,
       selector => sel_a_larger_b_0_selector
     );
-fork_top_0: component fork_top
+fork_top_0: entity work.asym_fork_stage
+     generic map(PHASE_INIT_A => '0',
+            PHASE_INIT_B =>'0',
+            PHASE_INIT_C => '0')
      port map (
-      a_ack_out => Mux_0_c_ctrl_out_ack,
-      a_data_in(31 downto 0) => Mux_0_c_data_out(31 downto 0),
-      a_req_in => Mux_0_c_ctrl_out_req,
-      b_ack_in => fork_top_0_b_ctrl_out_ack,
-      b_data_out(31 downto 0) => fork_top_0_b_data_out(31 downto 0),
-      b_req_out => fork_top_0_b_ctrl_out_req,
-      c_ack_in => fork_top_0_c_ctrl_out_ack,
-      c_data_out(31 downto 0) => fork_top_0_c_data_out(31 downto 0),
-      c_req_out => fork_top_0_c_ctrl_out_req,
+      ch_in_a_ack => Mux_0_c_ctrl_out_ack,
+      ch_in_a_data(31 downto 0) => Mux_0_c_data_out(31 downto 0),
+      ch_in_a_req => Mux_0_c_ctrl_out_req,
+      ch_out_b_ack => fork_top_0_b_ctrl_out_ack,
+      ch_out_b_data(31 downto 0) => fork_top_0_b_data_out(31 downto 0),
+      ch_out_b_req => fork_top_0_b_ctrl_out_req,
+      ch_out_c_ack => fork_top_0_c_ctrl_out_ack,
+      ch_out_c_data(31 downto 0) => fork_top_0_c_data_out(31 downto 0),
+      ch_out_c_req => fork_top_0_c_ctrl_out_req,
       rst => rst_1
     );
-fork_top_1: component fork_top
+fork_top_1: entity work.asym_fork_stage
+     generic map(PHASE_INIT_A => '0',
+       PHASE_INIT_B =>'0',
+       PHASE_INIT_C => '0')
      port map (
-      a_ack_out => demux_0_c_ctrl_out_ack,
-      a_data_in(31 downto 0) => demux_0_c_data_out(31 downto 0),
-      a_req_in => demux_0_c_ctrl_out_req,
-      b_ack_in => fork_top_1_b_ctrl_out_ack,
-      b_data_out(31 downto 0) => fork_top_1_b_data_out(31 downto 0),
-      b_req_out => fork_top_1_b_ctrl_out_req,
-      c_ack_in => fork_top_1_c_ctrl_out_ack,
-      c_data_out(31 downto 0) => fork_top_1_c_data_out(31 downto 0),
-      c_req_out => fork_top_1_c_ctrl_out_req,
+      ch_in_a_ack => demux_0_c_ctrl_out_ack,
+      ch_in_a_data(31 downto 0) => demux_0_c_data_out(31 downto 0),
+      ch_in_a_req => demux_0_c_ctrl_out_req,
+      ch_out_b_ack => fork_top_1_b_ctrl_out_ack,
+      ch_out_b_data(31 downto 0) => fork_top_1_b_data_out(31 downto 0),
+      ch_out_b_req => fork_top_1_b_ctrl_out_req,
+      ch_out_c_ack => fork_top_1_c_ctrl_out_ack,
+      ch_out_c_data(31 downto 0) => fork_top_1_c_data_out(31 downto 0),
+      ch_out_c_req => fork_top_1_c_ctrl_out_req,
       rst => rst_1
     );
-gate_0: component gate
+gate_0: entity work.go
+     generic map (
+       req_init => '1')
      port map (
-      ack_in => gate_0_ctrl_out_ack,
-      ack_out => click_element_0_ctrl_out_ack,
+      ch_out_ack => gate_0_ctrl_out_ack,
+      ch_in_ack => click_element_0_ctrl_out_ack,
       go => go_1,
-      req_in => click_element_0_ctrl_out_req,
-      req_out => gate_0_ctrl_out_req
+      ch_in_req => click_element_0_ctrl_out_req,
+      ch_out_req => gate_0_ctrl_out_req
     );
-inverter_0: component inverter
+--inverter_0: component inverter
+--     port map (
+--      ch_out_ack => inverter_0_ctrl_out_ack,
+--      ch_in_ack => sel_a_not_b_fork_0_sel_ctrl_b_out_ack,
+--      ch_in_req => sel_a_not_b_fork_0_sel_ctrl_b_out_req,
+--      ch_out_req => inverter_0_ctrl_out_req
+--    );
+merge_0: component unbuff_merge
      port map (
-      ack_in => inverter_0_ctrl_out_ack,
-      ack_out => sel_a_not_b_fork_0_sel_ctrl_b_out_ack,
-      req_in => sel_a_not_b_fork_0_sel_ctrl_b_out_req,
-      req_out => inverter_0_ctrl_out_req
-    );
-merge_0: component merge
-     port map (
-      a_ack_out => demux_1_b_ctrl_out_ack,
-      a_data_in(31 downto 0) => a_minus_b_0_result(31 downto 0),
-      a_req_in => demux_1_b_ctrl_out_req_del,
-      b_ack_out => demux_1_c_ctrl_out_ack,
-      b_data_in(31 downto 0) => b_minus_a_0_result(31 downto 0),
-      b_req_in => demux_1_c_ctrl_out_req_del,
-      c_ack_in => merge_0_c_ctrl_out_ack,
-      c_data_out(31 downto 0) => merge_0_c_data_out(31 downto 0),
-      c_req_out => merge_0_c_ctrl_out_req,
+      ch_in_a_ack => demux_1_b_ctrl_out_ack,
+      ch_in_a_data(31 downto 0) => a_minus_b_0_result(31 downto 0),
+      ch_in_a_req => demux_1_b_ctrl_out_req_del,
+      ch_in_b_ack => demux_1_c_ctrl_out_ack,
+      ch_in_b_data(31 downto 0) => b_minus_a_0_result(31 downto 0),
+      ch_in_b_req => demux_1_c_ctrl_out_req_del,
+      ch_out_c_ack => merge_0_c_ctrl_out_ack,
+      ch_out_c_data(31 downto 0) => merge_0_c_data_out(31 downto 0),
+      ch_out_c_req => merge_0_c_ctrl_out_req,
       rst => rst_1
     );
 sel_a_larger_b_0: component sel_a_larger_b
      port map (
-      ack_out => fork_top_1_b_ctrl_out_ack,
-      data_in(31 downto 0) => fork_top_1_b_data_out(31 downto 0),
-      req_in => fork_top_1_b_ctrl_out_req,
-      reset => rst_1,
-      sel_ack_in => sel_a_larger_b_0_sel_ctrl_out_ack,
-      sel_req_out => sel_a_larger_b_0_sel_ctrl_out_req,
+      ch_in_ack => fork_top_1_b_ctrl_out_ack,
+      ch_in_data(31 downto 0) => fork_top_1_b_data_out(31 downto 0),
+      ch_in_req => fork_top_1_b_ctrl_out_req,
+      rst => rst_1,
+      ch_out_sel_ack => sel_a_larger_b_0_sel_ctrl_out_ack,
+      ch_out_sel_req => sel_a_larger_b_0_sel_ctrl_out_req,
       selector => sel_a_larger_b_0_selector
     );
 sel_a_not_b_fork_0: component sel_a_not_b_fork
      port map (
-      a_ack_out => fork_top_0_b_ctrl_out_ack,
-      a_data_in(31 downto 0) => fork_top_0_b_data_out(31 downto 0),
-      a_req_in => fork_top_0_b_ctrl_out_req,
-      reset => rst_1,
+      ch_in_a_ack => fork_top_0_b_ctrl_out_ack,
+      ch_in_a_data(31 downto 0) => fork_top_0_b_data_out(31 downto 0),
+      ch_in_a_req => fork_top_0_b_ctrl_out_req,
+      rst => rst_1,
       sel_ack_b_in => sel_a_not_b_fork_0_sel_ctrl_b_out_ack,
       sel_ack_c_in => sel_a_not_b_fork_0_sel_ctrl_c_out_ack,
       sel_req_b_out => sel_a_not_b_fork_0_sel_ctrl_b_out_req,

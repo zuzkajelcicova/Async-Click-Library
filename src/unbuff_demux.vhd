@@ -6,9 +6,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.defs.all;
 
-entity demux is
+entity unbuff_demux is
     generic(
-        PHASE_INIT : std_logic := '0';
+        PHASE_INIT_A : std_logic := '0';
 	    PHASE_INIT_B: std_logic := '0';
 	    PHASE_INIT_C: std_logic := '0'
 	    );
@@ -33,58 +33,50 @@ entity demux is
 		ch_out_c_data: out std_logic_vector(DATA_WIDTH-1 downto 0);
 		ch_out_c_ack : in  std_logic
 	    );
-end demux;
+end unbuff_demux;
 
-architecture Behavioral of demux is
+architecture Behavioral of unbuff_demux is
 
-	signal phase : std_logic;
-	signal click : std_logic;
-	
-	signal sel_ready : std_logic;
-	signal data_reg : word_t;
+	signal phase_a : std_logic;
+	signal click_req, click_ack : std_logic;
 	
 	signal phase_b : std_logic;
 	signal phase_c : std_logic;
-	
-	-- Choice 
-	signal b_ready, b_selected : std_logic;
-	signal c_ready, c_selected : std_logic;
 
 begin
     
 	-- Control Path   
-    ch_in_sel_ack <= phase;
-    ch_in_a_ack <= phase;
+    ch_in_sel_ack <= phase_a;
+    ch_in_a_ack <= phase_a;
     ch_out_b_req <= phase_b;
-    ch_out_b_data <= data_reg;
+    ch_out_b_data <= ch_in_a_data;
     ch_out_c_req <= phase_c;
-    ch_out_c_data <= data_reg;
+    ch_out_c_data <= ch_in_a_data;
     
-    -- Selector trigger
-    sel_ready <= (ch_in_sel_req and not(phase) and ch_in_a_req) or (not(ch_in_sel_req) and phase and not(ch_in_a_req)) after ANDOR3_DELAY + NOT1_DELAY;
-	
-	b_ready <= phase_b xnor ch_out_b_ack after XOR_DELAY + NOT1_DELAY;
-    c_ready <= phase_c xnor ch_out_c_ack after XOR_DELAY + NOT1_DELAY;
+    -- Request FF clock function
+    click_req <= (ch_in_sel_req and not(phase_a) and ch_in_a_req) or (not(ch_in_sel_req) and phase_a and not(ch_in_a_req)) after ANDOR3_DELAY + NOT1_DELAY;
     
-    -- Select an option
-    b_selected <= b_ready and sel_ready and selector after AND3_DELAY;
-    c_selected <= c_ready and sel_ready and not(selector) after AND3_DELAY;
-    
-    click <= b_selected or c_selected after OR2_DELAY;
+    -- Acknowledge FF clock function
+    click_ack <= (ch_out_b_ack xnor phase_b) and (ch_out_c_ack xnor phase_c) after AND2_DELAY + XOR_DELAY + NOT1_DELAY;
 
-	clock_regs : process(click, rst)
+	req : process(click_req, rst)
         begin
             if rst = '1' then
-                phase <= PHASE_INIT;
                 phase_b <= PHASE_INIT_B;
                 phase_c <= PHASE_INIT_C;
-                data_reg <= (others => '0');
-            elsif rising_edge(click) then
-                phase <= not phase after REG_CQ_DELAY;
+            elsif rising_edge(click_req) then
                 phase_b <= phase_b xor selector after REG_CQ_DELAY;
                 phase_c <= phase_c xor not(selector) after REG_CQ_DELAY;
-                data_reg <= ch_in_a_data after REG_CQ_DELAY;
             end if;
-    end process clock_regs;
+    end process req;
+    
+	ack : process(click_ack, rst)
+        begin
+            if rst = '1' then
+                phase_a <= PHASE_INIT_A;
+            elsif rising_edge(click_ack) then
+                phase_a <= not phase_a after REG_CQ_DELAY;
+            end if;
+    end process ack;
 	
 end Behavioral;

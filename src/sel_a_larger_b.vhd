@@ -8,16 +8,16 @@ entity sel_a_larger_b is
         PHASE_INIT : std_logic := '0'
 	    );
 	port(
-        reset: in  std_logic;
+        rst: in  std_logic;
 	    -- Data
-		data_in : in  std_logic_vector(DATA_WIDTH_1 -1 downto 0);
-		req_in : in  std_logic;
-		ack_out : out std_logic;
+		ch_in_data : in  std_logic_vector(DATA_WIDTH_1 -1 downto 0);
+		ch_in_req : in  std_logic;
+		ch_in_ack : out std_logic;
 
 		-- Selector
 		selector : out std_logic;
-		sel_req_out : out std_logic;
-		sel_ack_in : in  std_logic
+		ch_out_sel_req : out std_logic;
+		ch_out_sel_ack : in  std_logic
 	    );
 end sel_a_larger_b;
 
@@ -37,23 +37,23 @@ architecture Behavioral of sel_a_larger_b is
     
 begin
     -- XNOR
-    click <= req_in xnor sel_ack_in after OR2_DELAY;
+    click <= ch_in_req xnor ch_out_sel_ack after OR2_DELAY;
     
-    a <= data_in(DATA_WIDTH_1 - 1 downto DATA_WIDTH_1/2);
-    b <= data_in(DATA_WIDTH_1/2 -1 downto 0);
+    a <= ch_in_data(DATA_WIDTH_1 - 1 downto DATA_WIDTH_1/2);
+    b <= ch_in_data(DATA_WIDTH_1/2 -1 downto 0);
     
     DELAY_SEL_REQ: entity work.delay_element
         GENERIC MAP(
                     size => ADD_DELAY)
-        PORT MAP   (d => req_in,
+        PORT MAP   (d => ch_in_req,
                     z => a_req_in_sig);
 
-	clock_regs : process(click, reset)
+	clock_regs : process(click, rst)
         begin
-            if reset = '1' then
+            if rst = '1' then
                 phase <= PHASE_INIT;
             elsif rising_edge(click) then
-                phase <= req_in after REG_CQ_DELAY;
+                phase <= ch_in_req after REG_CQ_DELAY;
             end if;
     end process clock_regs;
     
@@ -67,7 +67,7 @@ begin
     end process sel;
 	
 	selector <= data_sel;
-	sel_req_out <= a_req_in_sig;
-	ack_out <= phase;
+	ch_out_sel_req <= a_req_in_sig;
+	ch_in_ack <= phase;
 	
 end Behavioral;
