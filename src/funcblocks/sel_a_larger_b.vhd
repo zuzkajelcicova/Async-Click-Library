@@ -1,11 +1,14 @@
+----------------------------------------------------------------------------------
+-- (A > B)
+----------------------------------------------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 use work.defs.all;
 
 entity sel_a_larger_b is
   generic(
-    DATA_WIDTH    : natural := DATA_WIDTH;
-    PHASE_INIT    : std_logic := '0'
+    DATA_WIDTH    : natural := DATA_WIDTH
   );
   port(
     -- Data

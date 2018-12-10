@@ -31,13 +31,12 @@ architecture Behavioral of sel_a_not_b is
   attribute dont_touch of  a, b : signal is "true";
     
 begin
-  --data
   a <= in_data(DATA_WIDTH - 1 downto DATA_WIDTH/2);
   b <= in_data(DATA_WIDTH/2 -1 downto 0);
     
   DELAY_REQ: entity work.delay_element
     generic map(
-      size => ADD_DELAY)
+      size => ADD_DELAY+1)
     port map(d => in_req,
       z => out_req);
 

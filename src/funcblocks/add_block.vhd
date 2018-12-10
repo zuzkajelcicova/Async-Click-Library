@@ -8,7 +8,6 @@ use work.defs.all;
 use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
 
-
 entity add_block is
   generic ( 
     DATA_WIDTH: natural := DATA_WIDTH);
