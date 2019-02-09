@@ -7,8 +7,8 @@ use work.defs.all;
 
 entity GCD is
   port (
-    AB : in std_logic_vector ( 31 downto 0 );
-    RESULT : out std_logic_vector ( 31 downto 0 );
+    AB : in std_logic_vector ( DATA_WIDTH-1 downto 0 );
+    RESULT : out std_logic_vector ( DATA_WIDTH-1 downto 0 );
     rst : in std_logic;
     i_req:  in std_logic;
     i_ack:  out std_logic;
@@ -35,16 +35,17 @@ architecture STRUCTURE of GCD is
   end component fork;
   
   component mux is
+  generic ( DATA_WIDTH : natural := DATA_WIDTH);
   port (
     rst : in STD_LOGIC;
     inA_req : in STD_LOGIC;
-    inA_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    inA_data : in STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     inA_ack : out STD_LOGIC;
     inB_req : in STD_LOGIC;
-    inB_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    inB_data : in STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     inB_ack : out STD_LOGIC;
     outC_req : out STD_LOGIC;
-    outC_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    outC_data : out STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     outC_ack : in STD_LOGIC;
     inSel_req : in STD_LOGIC;
     inSel_ack : out STD_LOGIC;
@@ -56,13 +57,13 @@ architecture STRUCTURE of GCD is
   port (
     rst : in STD_LOGIC;
     inA_req : in STD_LOGIC;
-    inA_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    inA_data : in STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     inA_ack : out STD_LOGIC;
     outB_req : out STD_LOGIC;
-    outB_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    outB_data : out STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     outB_ack : in STD_LOGIC;
     outC_req : out STD_LOGIC;
-    outC_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    outC_data : out STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     outC_ack : in STD_LOGIC
   );
   end component reg_fork;
@@ -96,16 +97,16 @@ architecture STRUCTURE of GCD is
   port (
     rst : in STD_LOGIC;
     inA_req : in STD_LOGIC;
-    inA_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    inA_data : in STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     inA_ack : out STD_LOGIC;
     inSel_req : in STD_LOGIC;
     inSel_ack : out STD_LOGIC;
     selector : in STD_LOGIC;
     outB_req : out STD_LOGIC;
-    outB_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    outB_data : out STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     outB_ack : in STD_LOGIC;
     outC_req : out STD_LOGIC;
-    outC_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    outC_data : out STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     outC_ack : in STD_LOGIC
   );
   end component demux;
@@ -115,12 +116,12 @@ architecture STRUCTURE of GCD is
     rst : in STD_LOGIC;
     inA_req : in STD_LOGIC;
     inA_ack : out STD_LOGIC;
-    inA_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    inA_data : in STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     inB_req : in STD_LOGIC;
     inB_ack : out STD_LOGIC;
-    inB_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    inB_data : in STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     outC_req : out STD_LOGIC;
-    outC_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    outC_data : out STD_LOGIC_VECTOR ( DATA_WIDTH-1 downto 0 );
     outC_ack : in STD_LOGIC
   );
   end component merge;

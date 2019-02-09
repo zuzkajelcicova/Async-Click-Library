@@ -7,7 +7,8 @@ use work.defs.all;
 
 entity mux is
   --generic for initializing the phase registers
-  generic(PHASE_INIT_C : std_logic := '0';
+  generic(DATA_WIDTH      : natural := DATA_WIDTH;
+     PHASE_INIT_C : std_logic := '0';
      PHASE_INIT_A   : std_logic := '0';
      PHASE_INIT_B   : std_logic := '0';
      PHASE_INIT_SEL : std_logic := '0');
