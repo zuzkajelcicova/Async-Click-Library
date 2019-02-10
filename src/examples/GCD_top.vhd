@@ -14,7 +14,9 @@ entity GCD_top is
         RESULT: out std_logic_vector(DATA_WIDTH-1 downto 0);
         o_req: out std_logic;
         o_ack: in std_logic;
-        clk: in std_logic
+        clk: in std_logic;
+        req_deb: out std_logic;
+        rst_deb: out std_logic
          );
 end GCD_top;
 
@@ -61,6 +63,9 @@ req_Button: component debounce_btn
         clk => clk,
         i_btn => i_req,
         o_switch => req_sig);
+        
+    rst_deb <= rst_sig;
+    req_deb <= req_sig;
 
 GCD_module: component GCD
      port map (
