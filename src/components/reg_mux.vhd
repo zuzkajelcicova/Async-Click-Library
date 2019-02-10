@@ -35,7 +35,7 @@ architecture arch of reg_mux is
 
   -- the registers
   signal phase_c, phase_a, phase_b : std_logic;
-  signal data_reg, data_sig : word_t;
+  signal data_reg, data_sig : std_logic_vector(DATA_WIDTH-1 downto 0);
   -- Clock
   signal click : std_logic;
   signal pulse : std_logic;

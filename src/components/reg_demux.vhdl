@@ -37,7 +37,7 @@ architecture Behavioral of reg_demux is
 
   signal phase, phase_b, phase_c : std_logic;
   signal click, in_token, outB_bubble, outC_bubble : std_logic;
-  signal data_reg : word_t;
+  signal data_reg : std_logic_vector(DATA_WIDTH-1 downto 0);
   signal b_selected, c_selected : std_logic;
 
 begin  
