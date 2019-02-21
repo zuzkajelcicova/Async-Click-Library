@@ -26,7 +26,7 @@ architecture  lut of  delay_element  is
   end  component;
   -- Internal  signals.
   signal  s_connect : std_logic_vector(size  downto  0);
-  --------------------------------------------------
+  -- signal constraints
   attribute  DONT_TOUCH : string;
   attribute  DONT_TOUCH of  s_connect : signal  is "true";
   attribute  rloc : string;

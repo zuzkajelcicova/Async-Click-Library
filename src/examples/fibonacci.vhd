@@ -41,7 +41,9 @@ architecture STRUCTURE of Fib is
   signal reg_fork_1_outC_req : STD_LOGIC;
   signal rst_1 : STD_LOGIC;
   signal start_1 : STD_LOGIC;
+
 begin
+
   RESULT(DATA_WIDTH-1 downto 0) <= reg_fork_1_outB_data(DATA_WIDTH-1 downto 0);
   ack_1 <= ack;
   req <= reg_fork_1_outB_req;
@@ -58,7 +60,13 @@ begin
       out_ack => add_block_0_ctrl_out_ack,
       out_req => add_block_0_ctrl_out_req
     );
-  R_0: entity work.click_element
+
+  R_0: entity work.decoupled_hs_reg
+    generic map(
+      DATA_WIDTH    => DATA_WIDTH,
+      VALUE         => 0,
+      PHASE_INIT_IN => '0',
+      PHASE_INIT_OUT=> '0')
     port map (
       in_ack => add_block_0_ctrl_out_ack,
       in_data(DATA_WIDTH-1 downto 0) => add_block_0_outC_data(DATA_WIDTH-1 downto 0),
@@ -68,6 +76,7 @@ begin
       out_req => click_element_0_ctrl_out_req,
       rst => rst_1
     );
+
   GO: entity work.go_component
     port map (
       go => start_1,
@@ -77,6 +86,8 @@ begin
       out_req => go_component_0_ctrl_out_req
     );
   J_0: entity work.join
+    generic map(
+      PHASE_INIT => '0')
     port map (
       inA_ack => go_component_0_ctrl_out_ack,
       inA_req => go_component_0_ctrl_out_req,
@@ -86,6 +97,7 @@ begin
       outC_req => join_0_outC_req,
       rst => rst_1
     );
+
   RF_0: entity work.reg_fork
     generic map(DATA_WIDTH =>DATA_WIDTH,
       VALUE=>1,
@@ -104,6 +116,7 @@ begin
       outC_req => reg_fork_0_outC_req,
       rst => rst_1
     );
+    
   RF_1: entity work.reg_fork
     generic map(DATA_WIDTH => DATA_WIDTH,
       VALUE=>0,

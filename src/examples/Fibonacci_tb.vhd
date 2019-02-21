@@ -12,14 +12,14 @@ architecture STRUCTURE of Fib_tb is
   port (
     rst : in STD_LOGIC;
     start : in STD_LOGIC;
-    RESULT : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    RESULT : out STD_LOGIC_VECTOR ( 15 downto 0 );
     ack : in STD_LOGIC;
     req : out STD_LOGIC
   );
   end component Fib;
   
   signal start, rst, ack, req: std_logic;
-  signal RESULT: std_logic_vector(31 downto 0);
+  signal RESULT: std_logic_vector(15 downto 0);
   
   attribute dont_touch : string;
   attribute dont_touch of  ack, req : signal is "true";
@@ -32,7 +32,7 @@ begin
   
   Fib_module: component Fib
     port map (
-      RESULT(31 downto 0) => RESULT(31 downto 0),
+      RESULT(15 downto 0) => RESULT(15 downto 0),
       ack => ack,
       start => start,
       req => req,

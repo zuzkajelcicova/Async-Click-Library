@@ -24,7 +24,10 @@ entity add_block is
 end add_block;
 
 architecture Behavioral of add_block is
+signal connect: std_logic := '0'; -- signal for constraining i/o (needed only for post-timing simulation)
 
+attribute dont_touch : string;
+attribute dont_touch of  connect : signal is "true";   
 begin
 
 delay_req: entity work.delay_element
@@ -37,6 +40,7 @@ delay_req: entity work.delay_element
   );
 
 outC_data <= inA_data + inB_data after ADDER_DELAY;
-in_ack <= out_ack;
+in_ack <= connect;
+connect <= out_ack;
 
 end Behavioral;
