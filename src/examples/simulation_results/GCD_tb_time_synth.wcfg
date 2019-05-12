@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="GCD_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="GCD_tb" />
+            <top_module name="defs" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="2102000001fs"></ZoomEndTime>
+      <Cursor1Time time="200000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="140"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="24" />
+   <wvobject type="array" fp_name="/GCD_tb/A">
+      <obj_property name="ElementShortName">A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">A[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GCD_tb/B">
+      <obj_property name="ElementShortName">B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/i_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">i_req</obj_property>
+      <obj_property name="ObjectShortName">i_req</obj_property>
+      <obj_property name="label">In_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/i_ack">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">i_ack</obj_property>
+      <obj_property name="ObjectShortName">i_ack</obj_property>
+      <obj_property name="label">In_Ack</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/o_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">o_req</obj_property>
+      <obj_property name="ObjectShortName">o_req</obj_property>
+      <obj_property name="label">Out_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/o_ack">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">o_ack</obj_property>
+      <obj_property name="ObjectShortName">o_ack</obj_property>
+      <obj_property name="label">Out_Ack</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GCD_tb/A_result">
+      <obj_property name="ElementShortName">A_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">A_result[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GCD_tb/B_result">
+      <obj_property name="ElementShortName">B_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B_result[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider31" type="divider">
+      <obj_property name="label">MX0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/GCD_module/MX_0/outC_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_req</obj_property>
+      <obj_property name="ObjectShortName">outC_req</obj_property>
+      <obj_property name="label">OutC_Req</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider35" type="divider">
+      <obj_property name="label">RF0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/GCD_module/RF_0/outC_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_req</obj_property>
+      <obj_property name="ObjectShortName">outC_req</obj_property>
+      <obj_property name="label">OutC_Req</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GCD_tb/GCD_module/RF_0/outC_data">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">outC_data[15:0]</obj_property>
+      <obj_property name="label">OutC_Data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider37" type="divider">
+      <obj_property name="label">DX0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/GCD_module/DX_0/outB_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outB_req</obj_property>
+      <obj_property name="ObjectShortName">outB_req</obj_property>
+      <obj_property name="label">OutB_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/GCD_module/DX_0/outC_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_req</obj_property>
+      <obj_property name="ObjectShortName">outC_req</obj_property>
+      <obj_property name="label">OutC_Req</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider41" type="divider">
+      <obj_property name="label">DX1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/GCD_module/DX_1/outB_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outB_req</obj_property>
+      <obj_property name="ObjectShortName">outB_req</obj_property>
+      <obj_property name="label">OutB_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/GCD_module/DX_1/outC_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_req</obj_property>
+      <obj_property name="ObjectShortName">outC_req</obj_property>
+      <obj_property name="label">OutC_Req</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider42" type="divider">
+      <obj_property name="label">ME0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GCD_tb/GCD_module/ME_0/inA_data">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">inA_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">inA_data[15:0]</obj_property>
+      <obj_property name="label">InA_Data[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GCD_tb/GCD_module/ME_0/inB_data">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">inB_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">inB_data[15:0]</obj_property>
+      <obj_property name="label">InB_Data[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GCD_tb/GCD_module/ME_0/outC_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_req</obj_property>
+      <obj_property name="ObjectShortName">outC_req</obj_property>
+      <obj_property name="label">OutC_Req</obj_property>
+   </wvobject>
+</wave_config>

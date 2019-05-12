@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Fib_tb_time_synth.wdb" id="1">
+         <top_modules>
+            <top_module name="Fib_tb" />
+            <top_module name="defs" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="181200000fs"></ZoomStartTime>
+      <ZoomEndTime time="444959870fs"></ZoomEndTime>
+      <Cursor1Time time="200000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="140"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="23" />
+   <wvobject type="logic" fp_name="/Fib_tb/start">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Fib_tb/RESULT">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">RESULT[15:0]</obj_property>
+      <obj_property name="ObjectShortName">RESULT[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="label">Out_Data</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">req</obj_property>
+      <obj_property name="ObjectShortName">req</obj_property>
+      <obj_property name="label">Out_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/ack">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">ack</obj_property>
+      <obj_property name="ObjectShortName">ack</obj_property>
+      <obj_property name="label">Out_Ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider33" type="divider">
+      <obj_property name="label">RF_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/RF_0/inA_ack">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">inA_ack</obj_property>
+      <obj_property name="ObjectShortName">inA_ack</obj_property>
+      <obj_property name="label">InA_Ack</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/RF_0/outB_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outB_req</obj_property>
+      <obj_property name="ObjectShortName">outB_req</obj_property>
+      <obj_property name="label">OutB_Req</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider34" type="divider">
+      <obj_property name="label">RF_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/RF_1/outB_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outB_req</obj_property>
+      <obj_property name="ObjectShortName">outB_req</obj_property>
+      <obj_property name="label">OutC_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/RF_1/outB_ack">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outB_ack</obj_property>
+      <obj_property name="ObjectShortName">outB_ack</obj_property>
+      <obj_property name="label">OutC_Ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider35" type="divider">
+      <obj_property name="label">J_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/J_0/inA_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">inA_req</obj_property>
+      <obj_property name="ObjectShortName">inA_req</obj_property>
+      <obj_property name="label">InA_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/J_0/inB_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">inB_req</obj_property>
+      <obj_property name="ObjectShortName">inB_req</obj_property>
+      <obj_property name="label">InB_Req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/J_0/outC_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_req</obj_property>
+      <obj_property name="ObjectShortName">outC_req</obj_property>
+      <obj_property name="label">OutC_Req</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider36" type="divider">
+      <obj_property name="label">CL_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/CL_0/in_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">in_req</obj_property>
+      <obj_property name="ObjectShortName">in_req</obj_property>
+      <obj_property name="label">In_Req</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Fib_tb/Fib_module/CL_0/inA_data">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">inA_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">inA_data[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="label">InA_Data[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Fib_tb/Fib_module/CL_0/inB_data">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">inB_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">inB_data[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="label">InB_Data[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/CL_0/out_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">out_req</obj_property>
+      <obj_property name="ObjectShortName">out_req</obj_property>
+      <obj_property name="label">Out_Req</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Fib_tb/Fib_module/CL_0/outC_data">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">outC_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">outC_data[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="label">OutC_Data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider37" type="divider">
+      <obj_property name="label">R_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Fib_tb/Fib_module/R_0/out_req">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">out_req</obj_property>
+      <obj_property name="ObjectShortName">out_req</obj_property>
+      <obj_property name="label">Out_Req</obj_property>
+   </wvobject>
+</wave_config>
