@@ -65,7 +65,7 @@ begin
   inSel_token <= phase_sel xor inSel_req after XOR_DELAY;
   
   --Selector triggered pulse
-  click_req <= (inA_token and inSel_token) or (inB_token and inSel_token) after AND2_DELAY + OR2_DELAY;
+  click_req <= (inA_token and inSel_token and selector(0)) or (inB_token and inSel_token and not selector(0)) after AND2_DELAY + OR2_DELAY;
   
   --Output state
   click_ack <= phase_c xnor outC_ack after XOR_DELAY;
