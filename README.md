@@ -31,6 +31,20 @@ Setting up the GCD example for synthesis and simulation follows the same steps a
 
 The result is mapped to LD[7..0]. LD16 shows the acknowledge signal on the input channel and LD17 shows the request signal on the output channel.
 
+# Citation
+If you use any part of this code in your research, please cite our paper:
+
+```
+@inproceedings{async19clickdesign,
+author = {Mardari, Adrian and Jelcicova, Zuzana and Sparso, Jens},
+year = {2019},
+month = {05},
+pages = {9-18},
+title = {Design and FPGA-implementation of Asynchronous Circuits Using Two-Phase Handshaking},
+doi = {10.1109/ASYNC.2019.00010}
+}
+```
+
 
 ### References
 1. Adrian Mardari, Zuzana Jelcicová and Jens Sparsø. Design and FPGA-implementation of Asynchronous Circuits Using Two-phase Handshaking.
