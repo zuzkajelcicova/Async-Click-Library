@@ -49,4 +49,4 @@ If you use any part of this code in your research, please cite our paper:
 
 
 ### References
-1. Adrian Mardari, Zuzana Jelcicová and Jens Sparsø. Design and FPGA-implementation of Asynchronous Circuits Using Two-phase Handshaking.
+1. Adrian Mardari, Zuzana Jelčicová and Jens Sparsø. Design and FPGA-implementation of Asynchronous Circuits Using Two-phase Handshaking.
