@@ -36,12 +36,14 @@ If you use any part of this code in your research, please cite our paper:
 
 ```
 @inproceedings{async19clickdesign,
-author = {Mardari, Adrian and Jelcicova, Zuzana and Sparso, Jens},
-year = {2019},
-month = {05},
-pages = {9-18},
-title = {Design and FPGA-implementation of Asynchronous Circuits Using Two-Phase Handshaking},
-doi = {10.1109/ASYNC.2019.00010}
+   author      = {Mardari, Adrian and Jel{\u{c}}icov{\'{a}}, Zuzana and Spars{\o}, Jens},
+   title =       "{Design and {FPGA}-implementation of Asynchronous Circuits Using Two-phase Handshaking}",
+   booktitle   = {Proc. {IEEE} {I}nternational Symposium on Asynchronous Circuits and Systems {(ASYNC)}},
+   year        = {2019},
+   month       = {05},
+   publisher   = {IEEE Computer Society Press},
+   pages       = {9--18},
+   doi         = {10.1109/ASYNC.2019.00010}
 }
 ```
 
