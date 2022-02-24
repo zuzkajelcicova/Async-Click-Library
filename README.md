@@ -49,4 +49,4 @@ If you use any part of this code in your research, please cite our paper:
 
 
 ### References
-A. Mardari, Z. Jelčicová, and J. Sparsø, "Design and FPGA-implementation of Asynchronous Circuits Using Two-phase Handshaking," in *Proc. IEEE International Symposium on Asynchronous Circuits and Systems (ASYNC)*. IEEE Computer Society Press, May 2019, pp.9–18.
+A. Mardari, Z. Jelčicová, and J. Sparsø, "Design and FPGA-implementation of Asynchronous Circuits Using Two-phase Handshaking," in *Proc. IEEE International Symposium on Asynchronous Circuits and Systems (ASYNC)*. IEEE Computer Society Press, May 2019, pp. 9–18.
