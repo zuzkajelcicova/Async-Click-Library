@@ -40,7 +40,7 @@ If you use any part of this code in your research, please cite our paper:
    title =       "{Design and {FPGA}-implementation of Asynchronous Circuits Using Two-phase Handshaking}",
    booktitle   = {Proc. {IEEE} {I}nternational Symposium on Asynchronous Circuits and Systems {(ASYNC)}},
    year        = {2019},
-   month       = {05},
+   month       = {May},
    publisher   = {IEEE Computer Society Press},
    pages       = {9--18},
    doi         = {10.1109/ASYNC.2019.00010}
@@ -49,4 +49,4 @@ If you use any part of this code in your research, please cite our paper:
 
 
 ### References
-1. Adrian Mardari, Zuzana Jelčicová and Jens Sparsø. Design and FPGA-implementation of Asynchronous Circuits Using Two-phase Handshaking.
+A. Mardari, Z. Jelčicová, and J. Sparsø, "Design and FPGA-implementation of Asynchronous Circuits Using Two-phase Handshaking," in *Proc. IEEE International Symposium on Asynchronous Circuits and Systems (ASYNC)*. IEEE Computer Society Press, May 2019, pp.9–18.
